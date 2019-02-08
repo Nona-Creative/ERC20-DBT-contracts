@@ -1,0 +1,5 @@
+{
+  "init": "initialize project",
+  "compile": "compile contracts",
+  "lint:contracts": "lint contracts"
+}

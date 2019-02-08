@@ -1,0 +1,42 @@
+{
+  "name": "erc20-dbt-contracts",
+  "version": "0.1.0",
+  "description": "ERC20 DBT Contracts",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nona-Creative/ERC20-DBT-contracts.git"
+  },
+  "scripts": {
+    "help": "package-json-help.js",
+    "_init:env": "cp .env.local .env",
+    "init": "npm-run-all _init:env",
+    "lint:contracts": "solium --dir ./contracts",
+    "_compile:clean": "rm -rf build",
+    "_compile": "truffle compile",
+    "compile": "npm-run-all _compile:clean _compile",
+    "_git:pre-commit": "npm-run-all lint:contracts compile",
+    "_git:pre-push": "npm-run-all lint:contracts compile"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nona-Creative/ERC20-DBT-contracts/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run _git:pre-commit",
+      "pre-push": "npm run _git:pre-push"
+    }
+  },
+  "homepage": "https://github.com/Nona-Creative/ERC20-DBT-contracts#readme",
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "husky": "^1.1.3",
+    "npm-run-all": "^4.1.3",
+    "package-json-help": "0.0.8",
+    "solium": "^1.1.8",
+    "truffle": "^4.1.14"
+  },
+  "dependencies": {}
+}
